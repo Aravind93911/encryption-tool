@@ -1,1 +1,10 @@
-# Placeholder for README.md
+AES-256 File CryptorThis is a robust, single-file command-line utility for encrypting and decrypting files using the cryptography library's secure Fernet implementation. Fernet provides authenticated encryption, ensuring both confidentiality (via AES) and data integrity (via HMAC).⚠️ WARNING: Key SafetyThe security of your files depends entirely on the secrecy and safety of the generated master.key file.If you lose the key, your files are permanently lost.If your key is stolen, your files can be decrypted.InstallationSave the files: Save the file_cryptor.py and requirements-cryptor.txt files to a single directory.Install dependencies:pip install -r requirements-cryptor.txt
+UsageAll functions are run via the file_cryptor.py script.Step 1: Generate the Encryption Key (Once)You must first generate a master key. By default, it saves the key to master.key.python file_cryptor.py generate
+# Output:
+# [+] SUCCESS: New encryption key generated and saved to 'master.key'
+#     KEEP THIS FILE SAFE! Without it, encrypted files cannot be recovered.
+Tip: You can specify a different key file name using the -o or --output flag.Step 2: Encrypt a FileUse the enc command to encrypt a file.OptionDescriptionRequiredExample-i, --inputPath to the file you want to encrypt.Yesmydata.txt-k, --keyfilePath to the key file (master.key).Yesmaster.key-o, --output(Optional) Output path for the encrypted file. Defaults to <input>.enc.Nomydata.binExample:python file_cryptor.py enc --input mysecret.doc --keyfile master.key
+# This creates a file named mysecret.doc.enc
+Step 3: Decrypt a FileUse the dec command to decrypt the file.OptionDescriptionRequiredExample-i, --inputPath to the file you want to decrypt.Yesmysecret.doc.enc-k, --keyfilePath to the key file (master.key).Yesmaster.key-o, --output(Optional) Output path for the decrypted file. Defaults to removing the .enc extension.Nomysecret-restored.docExample:python file_cryptor.py dec --input mysecret.doc.enc --keyfile master.key
+# This restores the original file named mysecret.doc
+Decryption Failure: If you use the wrong key or if the file has been tampered with, the program will output an InvalidToken error, which is the sign of robust, authenticated encryption at work.# Placeholder for README.md
