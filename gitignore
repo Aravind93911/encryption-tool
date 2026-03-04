@@ -1,0 +1,32 @@
+# Byte-compiled / optimized
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Keys (NEVER commit!)
+*.key
+master.key
+secret.key
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# Encrypted test files
+*.enc
+*.dec
+
+# Virtual environments
+venv/
+env/
